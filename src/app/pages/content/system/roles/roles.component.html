@@ -1,0 +1,60 @@
+
+<div class="panel panel-default">
+	<nav class="navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#navbar-collapse-target">
+				<span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse-target">
+			<form class="sidebar-form navbar-form navbar-right">
+				<div class="input-group">
+					<input type="text" name="q" class="form-control"
+						placeholder="Search..."> <span class="input-group-btn">
+						<button type="submit" name="search" class="btn btn-flat">
+							<i class="fa fa-search"></i>
+						</button>
+					</span>
+				</div>
+			</form>
+			 <div class="navbar-form navbar-right">
+				<a (click)="createRole()" class="btn" data-toggle="tooltip" title="add"><span>新建&nbsp;</span><i class="fa fa-plus"></i></a>
+			</div>
+		    <div class="navbar-form navbar-right">
+				<a (click)="refresh()" class="btn" data-toggle="tooltip" title="refresh"><span>刷新&nbsp;</span><i class="fa fa-refresh"></i></a>
+			</div>
+		</div>
+	</nav>
+	<table class="table table-hover table-condensed table-bordered">
+		<thead>
+			<tr>
+				<th class="text-center">ID</th>
+				<th class="text-left">Name</th>
+				<th class="text-left">Description</th>
+				<th class="text-center">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let role of roles">
+				<td class="text-center"><h5>{{role.id}}</h5></td>
+				<td class="text-left">{{role.name}}</td>
+				<td class="text-left">{{role.description}}</td>
+				<td class="text-center">
+					<div class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+						<i class="fa fa-cog"></i> 
+						<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a (click)="editRole(role.id)"><i class="fa fa-pencil"></i><span>Edit</span></a> </li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>

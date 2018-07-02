@@ -1,0 +1,189 @@
+
+<div class="panel panel-default">
+	<nav class="navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+				<span class="sr-only">切换导航</span> <span class="icon-bar"></span> 
+				<span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse-target">
+			
+			<div class="navbar-form navbar-right">
+				<a (click)="cancel()" class="btn" data-toggle="tooltip" title="Cancel"><span>取消</span></a>
+			</div>
+			<div class="navbar-form navbar-right">
+				<a (click)="save()" class="btn" data-toggle="tooltip" title="Save"><span>保存</span></a>
+			</div>
+		</div>
+	</nav>
+
+	<ul class="nav nav-tabs">
+		<li role="presentation" class="active"><a data-toggle="tab" href="#user-basic">基本信息</a></li>
+		<li role="presentation"><a data-toggle="tab" href="#user-role" (click)="selectTab('role')">角色</a></li>
+		<li role="presentation"><a data-toggle="tab" href="#user-permission" (click)="selectTab('privilege')">权限</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div id="user-basic" class="tab-pane fade in active">
+			<h3>&nbsp;&nbsp;{{user.username | uppercase}} 基本信息 </h3>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-2">系统编号</label>
+					<div class="col-sm-10">
+						<input disabled type="text" class="form-control" name="userid" [ngModel]="user.userid">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2">用户名</label>
+					<div class="col-sm-10">
+						<input required [disabled]="action ==='edit'" type="text" class="form-control" name="username" [(ngModel)]="user.username">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">名</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="firstname" placeholder="Enter FirstName" name="firstname" [(ngModel)]="user.firstname">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">姓</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="lastname" placeholder="Enter LastName" name="lastname" [(ngModel)]="user.lastname">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">邮件</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [(ngModel)]="user.email">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2">电话</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control"  placeholder="Enter Phonenumber" name="phone" [(ngModel)]="user.phoneNumber">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2">授权方式</label>
+					<div class="col-sm-10">
+						<select class="selectpicker form-control" name="grant" data-live-search="true" [(ngModel)]="user.granttype">
+							<option>ROLE</option>
+							<option>PRIVILEGE</option>
+							<option>Test</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="checkbox">
+							<label><input type="checkbox"  name="isLocked" [(ngModel)]="user.locked" >Is Locked</label>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="user-role"  class="tab-pane fade">
+			<ul class="list-group">
+				<li *ngFor="let role of roles" class="list-group-item"  >
+					<div class="row">
+						<div class="col-sm-8">
+							<a href="#role{{role.id}}"  class="btn input-lg" data-toggle="collapse">{{role.name}}: {{role.description}}</a>
+						</div>
+						<div class="col-sm-4">
+							<input class="pull-right input-lg" type="checkbox" [(ngModel)]="role.selected" [disabled]="user.granttype=='ROLE'?false:true">
+						</div>
+					</div>
+					<div id="role{{role.id}}" class="collapse">
+						<ul class="list-group">
+							<li *ngFor="let p of role.top" class="list-group-item list-group-item-info" >
+								<div class="row">
+									<div class="col-sm-8">
+										<a href="#role_p_{{p.fid}}" class="btn input-lg" data-toggle="collapse" >{{p.name}}</a>
+									</div>
+								</div>
+								<div id="role_p_{{p.fid}}" class="collapse">
+									<ul class="list-group">
+										<li *ngFor="let child of p.childs" class="list-group-item">
+											<div class="row">
+												<div class="col-sm-8">
+													<a class="btn input-lg">{{child.name}}</a>
+												</div>
+											</div>
+											<div >
+												<ul class="list-group">
+													<li *ngFor="let child2 of child.childs" class="list-group-item">
+														<div class="row">
+															<div class="col-sm-8">
+																<a class="btn input-lg">{{child2.name}}</a>
+															</div>
+														</div>
+													</li>
+
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="user-permission" class="tab-pane fade">
+			<ul class="list-group">
+				<li *ngFor="let item of privileges" class="list-group-item">
+					<div class="row">
+						<div class="col-sm-8">
+							 <a href="#func{{item.fid}}" class="btn input-lg" data-toggle="collapse">{{item.name}}</a>
+						</div>
+						<div class="col-sm-4">
+							<input class="pull-right input-lg" type="checkbox" (click)="onClick($event,item.fid,item.parentid)" [(ngModel)]="item.selected" 
+							[disabled]="user.granttype=='PRIVILEGE'?false:true">
+						</div>
+					</div>
+					
+					<div id="func{{item.fid}}" class="collapse">
+						<ul class="list-group">
+							<li *ngFor="let child of item.childs" class="list-group-item list-group-item-info">
+								<div class="row">
+									<div class="col-sm-8">
+										<a class="btn input-lg">{{child.name}}</a>
+									</div>
+									<div class="col-sm-4">
+										<input class="pull-right input-lg" type="checkbox" (click)="onClick($event,child.fid,child.parentid)" [(ngModel)]="child.selected"
+										[disabled]="user.granttype=='PRIVILEGE'?false:true">
+									</div>
+								</div>
+								<div>
+								  <ul class="list-group">
+										<li *ngFor="let child2 of child.childs" class="list-group-item">
+											<div class="row">
+												<div class="col-sm-8">
+													<a class="btn input-lg">{{child2.name}}</a>
+												</div>
+												<div class="col-sm-4">
+													<input class="pull-right input-lg" type="checkbox" (click)="onClick($event,child2.fid,child2.parentid)" [(ngModel)]="child2.selected"
+													[disabled]="user.granttype=='PRIVILEGE'?false:true">
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

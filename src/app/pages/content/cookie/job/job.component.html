@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+	<nav class="navbar-default" role="navigation"> 
+	   <div class="navbar-header"> 
+	      <button type="button" class="navbar-toggle" data-toggle="collapse"  
+	         data-target="#navbar-collapse-target"> 
+	         <span class="sr-only">切换导航</span> 
+	         <span class="icon-bar"></span> 
+	         <span class="icon-bar"></span> 
+	         <span class="icon-bar"></span> 
+	      </button> 
+	      <a class="navbar-brand"></a> 
+	   </div> 
+	   <div class="collapse navbar-collapse" id="navbar-collapse-target"> 
+	      <!-- <ul class="nav navbar-nav"> 
+	        <li><a (click)="refresh()" class="btn" data-toggle="tooltip" title="refresh"><span>刷新&nbsp;</span><i class="fa fa-refresh"></i></a> </li>
+			<li><a (click)="add()" class="btn" data-toggle="tooltip" title="add"><span>新建&nbsp;</span><i class="fa fa-plus"></i></a></li>
+	      </ul>  -->
+	      	
+	        <form class="sidebar-form navbar-form navbar-right">
+		      <div class="input-group">
+		        <input type="text" name="q" class="form-control" placeholder="Search...">
+		        <span class="input-group-btn">
+		              <button type="submit" name="search"  class="btn btn-flat"><i class="fa fa-search"></i> </button>
+		        </span>
+		      </div>
+		    </form>
+		    <div class="navbar-form navbar-right">
+				<a (click)="add()" class="btn" data-toggle="tooltip" title="add"><span>新建&nbsp;</span><i class="fa fa-plus"></i></a>
+			</div>
+		    <div class="navbar-form navbar-right">
+				<a (click)="refresh()" class="btn" data-toggle="tooltip" title="refresh"><span>刷新&nbsp;</span><i class="fa fa-refresh"></i></a>
+			</div>
+	   </div> 
+	</nav> 
+	<app-jobdetail *ngIf="create" [title]="'Create Scheduler'" [create]="create" (onSubmit)="onSubmit($event)"></app-jobdetail>
+	<ul class="list-group table">
+		<li *ngFor="let job of jobs" class="list-group-item" [ngClass]="{'list-group-item-success': job.state === 'NORMAL'}" >
+			<a class = "btn pull-right" (click)="editJob(job.name)" data-toggle="tooltip" title="delete"> <i class="fa fa-pencil pull-right"></i></a>
+			<a *ngIf="job.state==='NORMAL'" class = "btn pull-right" (click)="pauseJob(job.name)" data-toggle="tooltip" title="pause"><span class="pull-right-container"> <i class="fa fa-stop pull-right"></i></span></a>
+			<a *ngIf="job.state!=='NORMAL'" class = "btn pull-right" (click)="resumeJob(job.name)" data-toggle="tooltip" title="resume"><span class="pull-right-container"> <i class="fa fa-play pull-right"></i></span></a>
+			<h4 class="list-group-item-heading">{{job.name}}: {{job.state}}</h4>
+			<p class="list-group-item-text">Group: {{job.groupName}}</p>
+			<p class="list-group-item-text">Expression: {{job.expression}}</p>
+			<app-jobdetail *ngIf="editScheduler===job.name" [jobClassName]="job.name" [title]="'Edit Scheduler'" [cornExpression]="job.expression" [create]="create" (onSubmit)="onSubmit($event)"></app-jobdetail>
+		</li>
+	</ul>
+</div>

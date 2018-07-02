@@ -1,0 +1,47 @@
+<div class="login-box" style="background-color: #ADADAD;">
+	<div class="login-logo">
+		<b>Feng App</b>
+	</div>
+	<!-- /.login-logo -->
+	<div class="login-box-body" style="border: 9px solid #ADADAD;">
+		<p class="login-box-msg">
+			<b>登录系统</b>
+		</p>
+
+		<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)"
+			class="show-form">
+
+
+			<div  class="form-group has-feedback">
+				<input type="text" name="username" class="form-control" placeholder="用户名" id="username" required 
+				[(ngModel)]="username" [ngModel]="username" (ngModelChange)="username = $event" #name="ngModel" #spy>
+			</div>
+			<div [hidden]="name.valid || name.pristine" class="alert" style="color: red">用户名为空</div>
+
+			<div class="form-group has-feedback">
+				<input type="password" name="password" class="form-control" placeholder="密码" id="password" required 
+				[(ngModel)]="password" [ngModel]="password" (ngModelChange)="password = $event" #pass="ngModel">
+			</div>
+			<div [hidden]="pass.valid || pass.pristine" class="alert" style="color: red">密码为空</div>
+
+			<div class="row">
+				<button type="submit" class="btn btn-default btn-block">登录</button>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-8">
+					<div *ngIf="auth?.hasError" class="alert" style="color: red">
+						<b>{{auth.errMsg}}</b>
+					</div>
+
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<!-- /.login-box-body -->
+</div>
+
+<div class="login-box" style="font-size: 20px;">
+	用户名：feng <br />密码：123456
+</div>

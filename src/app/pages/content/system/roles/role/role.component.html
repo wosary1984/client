@@ -1,0 +1,99 @@
+
+<div class="panel panel-default">
+	<nav class="navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+				<span class="sr-only">切换导航</span> <span class="icon-bar"></span> 
+				<span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse-target">
+			
+			<div class="navbar-form navbar-right">
+				<a (click)="cancel()" class="btn" data-toggle="tooltip" title="Cancel"><span>取消</span></a>
+			</div>
+			<div class="navbar-form navbar-right">
+				<a (click)="save()" class="btn" data-toggle="tooltip" title="Save"><span>保存</span></a>
+			</div>
+		</div>
+	</nav>
+
+	<ul class="nav nav-tabs">
+		<li role="presentation" class="active"><a data-toggle="tab" href="#role-basic">基本信息</a></li>
+		<li role="presentation"><a data-toggle="tab" href="#role-permission" (click)="selectTab('privilege')">权限</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div id="role-basic" class="tab-pane fade in active">
+			<h3>&nbsp;&nbsp;基本信息 </h3>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-2">系统编号</label>
+					<div class="col-sm-10">
+						<input disabled type="text" class="form-control" name="userid" [ngModel]="role.id">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2">名字</label>
+					<div class="col-sm-10">
+						<input required [disabled]="action ==='edit'" type="text" class="form-control" name="name" [(ngModel)]="role.name">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">描述</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="firstname" placeholder="Description" name="description" [(ngModel)]="role.description">
+					</div>
+				</div>
+
+			</form>
+		</div>
+		
+		<div id="role-permission" class="tab-pane fade">
+			<ul class="list-group">
+				<li *ngFor="let item of privileges" class="list-group-item">
+					<div class="row">
+						<div class="col-sm-8">
+							 <a href="#func{{item.fid}}" class="btn input-lg" data-toggle="collapse">{{item.name}}</a>
+						</div>
+						<div class="col-sm-4">
+							<input class="pull-right input-lg" type="checkbox" (click)="onClick($event,item.fid,item.parentid)" [(ngModel)]="item.selected">
+						</div>
+					</div>
+					
+					<div id="func{{item.fid}}" class="collapse">
+						<ul class="list-group">
+							<li *ngFor="let child of item.childs" class="list-group-item list-group-item-info">
+								<div class="row">
+									<div class="col-sm-8">
+										<a class="btn input-lg">{{child.name}}</a>
+									</div>
+									<div class="col-sm-4">
+										<input class="pull-right input-lg" type="checkbox" (click)="onClick($event,child.fid,child.parentid)" [(ngModel)]="child.selected">
+									</div>
+								</div>
+								<div>
+								  <ul class="list-group">
+										<li *ngFor="let child2 of child.childs" class="list-group-item">
+											<div class="row">
+												<div class="col-sm-8">
+													<a class="btn input-lg">{{child2.name}}</a>
+												</div>
+												<div class="col-sm-4">
+													<input class="pull-right input-lg" type="checkbox" (click)="onClick($event,child2.fid,child2.parentid)" [(ngModel)]="child2.selected">
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
