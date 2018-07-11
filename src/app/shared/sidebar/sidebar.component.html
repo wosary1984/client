@@ -43,7 +43,7 @@
 				
 				<ul class="treeview-menu">
 					<li *ngFor="let menu of treemenu.privilege.childs" [ngClass]="{'active':check === menu.fid}">
-						<a routerLink="{{menu.link}}" (click)="addActiveClass(menu.fid)"><i class="fa fa-circle-o"></i>{{menu.name}}</a></li>
+						<a routerLink="{{menu.link}}" (click)="addActiveClass(menu.fid)"><i class={{menu.icon}}></i>{{menu.name}}</a></li>
 				</ul>
 			</li>
 

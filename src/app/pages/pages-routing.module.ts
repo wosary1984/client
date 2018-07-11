@@ -28,6 +28,11 @@ const routes: Routes = [
                 path: 'system',
                 canActivate: [AuthGuardService],
                 loadChildren: './content/system/system.module#SystemModule'
+            },
+            {
+                path: 'org',
+                canActivate: [AuthGuardService],
+                loadChildren: './content/organization/organization.module#OrganizationModule'
             }
         ]
     }

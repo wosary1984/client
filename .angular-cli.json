@@ -23,14 +23,20 @@
 				"../node_modules/bootstrap/dist/css/bootstrap.min.css",
 				"../node_modules/admin-lte/dist/css/AdminLTE.min.css",
 				"../node_modules/admin-lte/dist/css/skins/_all-skins.min.css",
-				"../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css"
+				"../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css",
+				"assets/Create-An-Editable-Organization-Chart-with-jQuery-orgChart-Plugin/jquery.orgchart.css",
+				"assets/Animated-Organization-Chart-Tree-Diagram-Plugin-Stiff-Chart/css/stiff-chart.css",
+				"assets/treant-js-master/Treant.css"
 			],
 			"scripts": [
 				"../node_modules/jquery/dist/jquery.min.js",
 				"../node_modules/admin-lte/dist/js/adminlte.js",
 				"../node_modules/bootstrap/dist/js/bootstrap.min.js",
-				"../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js"
-			
+				"../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js",
+				"assets/Create-An-Editable-Organization-Chart-with-jQuery-orgChart-Plugin/jquery.orgchart.js",
+				"assets/Animated-Organization-Chart-Tree-Diagram-Plugin-Stiff-Chart/js/stiffChart.js",
+				"assets/treant-js-master/vendor/raphael.js",
+				"assets/treant-js-master/Treant.js"
 			],
 			"environmentSource": "environments/environment.ts",
 			"environments": {
