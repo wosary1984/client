@@ -8,7 +8,7 @@ const ActionPath = Object.freeze( {
         users: 'api/sys/users',
         user: 'api/sys/user',
         roles: 'api/sys/roles',
-        role:'api/sys/role',
+        role: 'api/sys/role',
         functions: 'api/sys/privileges'
     },
     cookie: {
@@ -17,6 +17,11 @@ const ActionPath = Object.freeze( {
         addjob: '/api/cookie/addjob',
         pausejob: '/api/cookie/pausejob',
         deletejob: '/api/cookie/deletejob'
+    },
+    org: {
+        company: 'api/org/company',
+        company_logo: 'api/org/company/logo',
+        department: 'api/org/department'
     }
 
 } )

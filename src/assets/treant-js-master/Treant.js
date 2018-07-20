@@ -1353,6 +1353,10 @@
             this.nodeHTMLid = nodeStructure.HTMLid;
 
             this.children = [];
+            
+            // fix isssue <path> attribute d: Expected number, "M,0,0".
+            this.X =0;
+            this.Y =0;
 
             return this;
         },

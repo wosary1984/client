@@ -38,17 +38,14 @@ abbr, acronym {
 body {
 	background: #fff;
 }
+
 /* optional Container STYLES */
 .chart {
 	height: 600px;
 	margin: 5px;
-	width: 100%;
+	width: 900px;
 }
-
-/* .Treant{
-	width:80%;
-} */
-
+/* .Treant > .node {  } */
 .Treant>p {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -56,38 +53,23 @@ body {
 	font-size: 12px;
 }
 
-.Treant>.node {
+.node-name {
+	font-weight: bold;
+}
+
+.nodeExample1 {
 	padding: 2px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	background-color: #ffffff;
 	border: 1px solid #000;
-	width: 250px;
+	width: 200px;
 	font-family: Tahoma;
-	font-size: 13px;
+	font-size: 12px;
 }
 
-.node-name {
-	font-weight: bold;
-}
-
-.Treant>.node img {
-	width: 30%;
-	height: 100%;
+.nodeExample1 img {
 	margin-right: 10px;
-}
-
-.Treant .collapse-switch {
-	width: 100%;
-	height: 100%;
-	border: none;
-}
-
-.Treant .node.collapsed {
-	background-color: #DEF82D;
-}
-
-.Treant .node.collapsed .collapse-switch {
-	background: none;
+	width:50px;
 }

@@ -41,6 +41,49 @@ export class BaseService {
             } )
             .catch(( error: any ) => this.handleError( functionName, error ) );
     }
+    
+    protected postBlobCommand(url:string,data:any, functionName:string):Promise<any>{
+        return this.http.post( url, data, { observe: 'response', responseType: 'blob',withCredentials: true } )
+        .toPromise()
+        .then( res => {
+            const status: number = res.status;
+            if ( status === 200 ) {
+                const back = {
+                    code: status,
+                    data: res.body
+                }
+                return back;
+            } else {
+                const back = {
+                    code: status
+                }
+                return back;
+            }
+        } )
+        .catch(( error: any ) => this.handleError( functionName, error ) );
+    }
+    
+    protected getBlobCommand( url: string, functionName: string ): Promise<any> {
+        return this.http.get( url, { observe: 'response', responseType: 'blob', withCredentials: true } )
+            .toPromise()
+            .then( res => {
+                const status: number = res.status;
+                // 服务端正确执行
+                if ( status === 200 ) {
+                    const back = {
+                        code: status,
+                        data: res.body
+                    }
+                    return back;
+                } else {
+                    const back = {
+                        code: status
+                    }
+                    return back
+                }
+            } )
+            .catch(( error: any ) => this.handleError( functionName, error ) );
+    }
 
     protected getCommand( url: string, functionName: string ): Promise<any> {
         return this.http.get( url, { observe: 'response', withCredentials: true } )
