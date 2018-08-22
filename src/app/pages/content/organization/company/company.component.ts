@@ -36,6 +36,10 @@ export class CompanyComponent implements OnInit {
             this.type = queryParams.type;
             this.comes = queryParams.comes;
             
+            if(this.action ==undefined){
+                this.router.navigate( ['/'] );
+            }
+            
             if(this.id !=undefined && this.id !=''){
                 let actionUrl = ActionPath.org.company_logo +'/'+this.id;
                 var that = this;
@@ -86,6 +90,7 @@ export class CompanyComponent implements OnInit {
             this.router.navigate( [this.comes] );
         }
     }
+    
     save() {
         const data = {
             action: this.action,

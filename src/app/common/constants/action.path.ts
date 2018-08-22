@@ -21,7 +21,8 @@ const ActionPath = Object.freeze( {
     org: {
         company: 'api/org/company',
         company_logo: 'api/org/company/logo',
-        department: 'api/org/department'
+        department: 'api/org/department',
+        employees:'api/org/employees'
     }
 
 } )

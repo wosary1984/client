@@ -39,5 +39,10 @@ export class OrgService extends BaseService {
         const url = this.serviceUrl( actionUrl );
         return this.postCommand( url, data, 'createDepartment' );
     }
+    
+    public getEmployees( actionUrl: string ): Promise<any> {
+        const url = this.serviceUrl( actionUrl );
+        return this.getCommand( url, 'getEmployees' );
+    }
 
 }

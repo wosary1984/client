@@ -14,8 +14,13 @@ export class UserdetailComponent implements OnInit, AfterViewInit {
     action = '';
     user = {
         userid: '',
+        firstname:'',
+        lastname:'',
         username: '',
         granttype:'',
+        email:'',
+        phoneNumber:'',
+        locked:false,
         roles: [],
         privileges: []
     };

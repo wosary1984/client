@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
         } );
     }
     
-    createUser( userid: string ) {
+    createUser( ) {
         this.router.navigate( ['/system/user/edituser'], {
             queryParams: {
                 action:'create'

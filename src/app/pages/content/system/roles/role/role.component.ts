@@ -12,6 +12,8 @@ export class RoleComponent implements OnInit {
 
     role = {
         id: '',
+        name:'',
+        description:'',
         privileges:[]
     };
     action;

@@ -37,7 +37,7 @@ export class RolesComponent implements OnInit {
         } );
     }
     
-    createRole( roleid: string ) {
+    createRole( ) {
         this.router.navigate( ['/system/roles/editrole'], {
             queryParams: {
                 action:'create'

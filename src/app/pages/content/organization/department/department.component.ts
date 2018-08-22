@@ -30,10 +30,9 @@ export class DepartmentComponent implements OnInit {
             this.department.parentType = queryParams.type;
             this.comes = queryParams.comes;
 
-            if ( this.department.action === 'edit' && queryParams.userid != null ) {
-            }
-            else if ( this.department.action === 'create' ) {
-            }
+            if ( this.department.action === undefined){
+                this.router.navigate( ['/'] );
+            } 
         } );
     }
 

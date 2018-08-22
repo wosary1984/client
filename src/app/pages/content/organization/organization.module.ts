@@ -8,6 +8,7 @@ import { CompanylistComponent } from './companylist/companylist.component';
 import { CompanyComponent } from './company/company.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentlistComponent } from './departmentlist/departmentlist.component';
+import { EmployeesComponent } from './employees/employees.component';
 
 @NgModule( {
     imports: [
@@ -15,7 +16,7 @@ import { DepartmentlistComponent } from './departmentlist/departmentlist.compone
         FormsModule,
         OrganizationRoutingModule
     ],
-    declarations: [OrganizationComponent, CompanylistComponent, CompanyComponent, DepartmentComponent, DepartmentlistComponent]
+    declarations: [OrganizationComponent, CompanylistComponent, CompanyComponent, DepartmentComponent, DepartmentlistComponent, EmployeesComponent]
 } )
 export class OrganizationModule {
 

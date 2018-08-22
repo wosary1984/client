@@ -108,7 +108,7 @@ export class OrganizationComponent implements OnInit {
                             //var $oImg = $('.Treant .node .img')
                         }
                     },
-                    animateOnInit: true,
+                    animateOnInit: false,
                     connectors: {
                         type: 'step'
                     },
