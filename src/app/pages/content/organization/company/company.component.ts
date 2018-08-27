@@ -81,7 +81,7 @@ export class CompanyComponent implements OnInit {
         }
     }
 
-    cancel() {
+    onCancel() {
         this.navBack();
     }
 
@@ -91,7 +91,7 @@ export class CompanyComponent implements OnInit {
         }
     }
     
-    save() {
+    onSave() {
         const data = {
             action: this.action,
             type: this.type,

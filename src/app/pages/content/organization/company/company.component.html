@@ -3,7 +3,7 @@
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#navbar-collapse-target">
-				<span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span
+				<span class="sr-only">Switch Navigation</span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"></a>
@@ -11,11 +11,11 @@
 		<div class="collapse navbar-collapse" id="navbar-collapse-target">
 
 			<div class="navbar-form navbar-right">
-				<a (click)="cancel()" class="btn" data-toggle="tooltip"
-					title="Cancel"><span>取消</span></a>
+				<a (click)="onCancel()" class="btn" data-toggle="tooltip"
+					title="Cancel"><span>Cancel</span></a>
 			</div>
 			<div *ngIf="action!=='view'" class="navbar-form navbar-right">
-				<a (click)="save()" class="btn" data-toggle="tooltip" title="Save"><span>保存</span></a>
+				<a (click)="onSave()" class="btn" data-toggle="tooltip" title="Save"><span>Save</span></a>
 			</div>
 		</div>
 	</nav>
@@ -24,26 +24,26 @@
 	<div style="margin: 10px;">
 		<form class="form-horizontal">
 			<div *ngIf="action==='create'" class="form-group">
-				<div class="col-sm-offset-3 col-sm-9"> <h3>创建新公司</h3> </div>
+				<div class="col-sm-offset-3 col-sm-9"> <h3>Create New Company</h3> </div>
 			</div>
 			<div *ngIf="action==='view'" class="form-group">
-				<div class="col-sm-offset-3 col-sm-9"> <h3>公司详情</h3> </div>
+				<div class="col-sm-offset-3 col-sm-9"> <h3>{{Name}} Basic Information</h3> </div>
 			</div>
 
 			<div *ngIf="action!=='create'" class="form-group">
-				<label class="col-sm-3 control-label" for="companyid">编号</label>
+				<label class="col-sm-3 control-label" for="companyid">Company ID</label>
 				<div class="col-sm-9">
 					<input [disabled]="action !=='create'" type="text" class="form-control" name="companyid" [ngModel]="id">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="companyName">公司名字</label>
+				<label class="col-sm-3 control-label" for="companyName">Company Name</label>
 				<div class="col-sm-9">
 					<input [disabled]="action !=='create'" type="text" class="form-control" name="companyName" placeholder="Company Name" [(ngModel)]="name">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="companyDescription">公司简介</label>
+				<label class="col-sm-3 control-label" for="companyDescription">Company Overview</label>
 				<div class="col-sm-9">
 					<textarea (change)="onValueChanged()" class="form-control" rows="3" name="companyDescription" [(ngModel)]="description"></textarea>
 				</div>
@@ -51,7 +51,7 @@
 
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="logoFile">公司LOGO</label>
+				<label class="col-sm-3 control-label" for="logoFile">Company LOGO</label>
 				<div class="col-sm-9">
 					<input type="file" (change)="onChangeSelectFile($event)">
 					<p class="help-block">Upload company logo</p>

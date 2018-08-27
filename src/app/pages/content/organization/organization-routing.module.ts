@@ -5,7 +5,8 @@ import { OrganizationComponent } from "./organization.component";
 import { CompanylistComponent } from "./companylist/companylist.component";
 import { DepartmentComponent } from "./department/department.component";
 import { CompanyComponent } from "./company/company.component";
-import { EmployeesComponent } from "./employees/employees.component"; 
+import { EmployeesComponent } from "./employees/employees.component";
+import { EmployeeComponent } from "./employee/employee.component";
 
 const routes: Routes = [
     {
@@ -32,7 +33,12 @@ const routes: Routes = [
         path: 'employees',
         canActivate: [AuthGuardService],
         component: EmployeesComponent
-        }
+    },
+    {
+        path: 'employee',
+        canActivate: [AuthGuardService],
+        component: EmployeeComponent
+    }
 ];
 
 @NgModule( {

@@ -95,7 +95,7 @@ export class CompanylistComponent implements OnInit, AfterViewInit {
 
     }
 
-    createCompany() {
+    onCreateCompany() {
         this.action = 'create';
         this.selectedNode.id = '';
         this.selectedNode.text = '';
@@ -112,7 +112,7 @@ export class CompanylistComponent implements OnInit, AfterViewInit {
         } );
     }
     
-    createDepartment(){
+    onCreateDepartment(){
         this.router.navigate( ['/org/department'], {
             queryParams: {
                 action:'create',

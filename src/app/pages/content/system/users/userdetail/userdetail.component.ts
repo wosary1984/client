@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { UserService } from "../../../../../service/user/user.service";
 import ActionPath from '../../../../../common/constants/action.path';
 declare var $: any;
+
 @Component( {
     selector: 'app-userdetail',
     templateUrl: './userdetail.component.html',
@@ -54,7 +55,7 @@ export class UserdetailComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-
+        $( '.selectpicker' ).selectpicker();
     }
 
     selectTab( element: any ) {

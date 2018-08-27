@@ -19,14 +19,14 @@
 				</div>
 			</form>
 			<div class="navbar-form navbar-right">
-				<a (click)="createCompany()" class="btn" data-toggle="tooltip"
-					title="新建公司"><span>新建公司</span></a>
+				<a (click)="onCreateCompany()" class="btn" data-toggle="tooltip"
+					title="New Company"><span>New Company</span></a>
 			</div>
 			<div *ngIf="action ==='view'"  class="navbar-form navbar-right">
-				<a (click)="createDepartment()" class="btn" data-toggle="tooltip" title="刷新"><span>创建部门</span></a>
+				<a (click)="onCreateDepartment()" class="btn" data-toggle="tooltip" title=""><span>New Department</span></a>
 			</div>
 			<div class="navbar-form navbar-right">
-				<a (click)="refresh()" class="btn" data-toggle="tooltip" title="刷新"><span>刷新</span></a>
+				<a (click)="refresh()" class="btn" data-toggle="tooltip" title="Refresh"><span>Refresh</span></a>
 			</div>
 		</div>
 	</nav>

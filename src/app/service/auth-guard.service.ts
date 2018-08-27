@@ -18,18 +18,26 @@ export class AuthGuardService implements CanActivate {
                         result = true;
                     }
                     for ( let ref of auth.user.userPermissions ) {
-                        if ( ref.search( url ) != -1 ) {
-                            result = true;
+
+                        for ( let r of ref.split( ';' ) ) {
+                            if ( r == url ) {
+                                result = true;
+                                break;
+                            }
                         }
+//                        if ( ref.search( url ) != -1 ) {
+//                            console.log( ref );
+//                            result = true;
+//                        }
                     }
 
                     if ( !result ) {
-                        this.service.navigateToError(this.router,'The path is not avaiable', url)
+                        this.service.navigateToError( this.router, 'The path is not avaiable', url )
                     }
                     return result;
                 } else {
-                    
-                    this.service.navigateToLogin(this.router,'/');
+
+                    this.service.navigateToLogin( this.router, '/' );
 
                     return false;
                 }
