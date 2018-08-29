@@ -6,7 +6,7 @@ const path = require("path"); // utility from node.js to manage file/folder path
 // configuration necessary for this script to run
 const config = {
     s3BucketName: 'feng-bucket',
-    folderPath: '../dist' // path relative script's location
+    folderPath: '../dist' // path relative script's location 
   };
 
 AWS.config.loadFromPath('./scripts/ECSCredentials.json');
