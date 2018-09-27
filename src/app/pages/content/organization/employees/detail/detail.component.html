@@ -10,9 +10,20 @@
 		</div>
 		<div class="collapse navbar-collapse" id="navbar-collapse-target">
 
+
+			<div class="btn-group dropdown navbar-form navbar-right">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Action 
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li *ngIf="employee.status ==='NONE'"><a href="#">Offer</a></li>
+					<li *ngIf="employee.status ==='NOTONBORAD'"><a href="#">On Board</a></li>
+				</ul>
+			</div>
+			
 			<div class="navbar-form navbar-right">
-				<a (click)="onCancel()" class="btn" data-toggle="tooltip"
-					title="Cancel"><span>Cancel</span></a>
+				<a (click)="onCancel()" class="btn" data-toggle="tooltip" title="Cancel"><span>Close</span></a>
 			</div>
 			<div *ngIf="action!=='view'" class="navbar-form navbar-right">
 				<a (click)="onSave()" class="btn" data-toggle="tooltip" title="Save"><span>Save</span></a>
@@ -20,6 +31,7 @@
 			<div *ngIf="action=='view'" class="navbar-form navbar-right">
 				<a (click)="onEdit()" class="btn" data-toggle="tooltip" title="Edit"><span>Edit</span></a>
 			</div>
+			
 		</div>
 	</nav>
 
@@ -27,49 +39,49 @@
 	<div style="margin: 10px;">
 		<form class="form-horizontal">
 			<div *ngIf="action==='create'" class="form-group">
-				<div class="col-sm-offset-2 col-sm-9"> <h3>Create New Employee</h3> </div>
+				<div class="col-sm-offset-2 col-sm-7"> <h3>Create New Employee</h3> </div>
 			</div>
 			<div *ngIf="action!=='create'" class="form-group">
-				<div class="col-sm-offset-2 col-sm-9"> <h3>{{employee.lastname}} {{employee.firstname}} Basic Information</h3> </div>
+				<div class="col-sm-offset-2 col-sm-7"> <h3>{{employee.lastname}} {{employee.firstname}} Basic Information</h3> </div>
 			</div>
 
 			<div *ngIf="action!=='create'" class="form-group">
 				<label class="col-sm-2 control-label" for="employeeid">Employee ID</label>
-				<div class="col-sm-9">
+				<div class="col-sm-7">
 					<input [disabled]="action !=='create'" type="text" class="form-control" name="employeeid" [ngModel]="employee.employeeid">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="firstname">First Name</label>
-				<div class="col-sm-9">
+				<div class="col-sm-7">
 					<input [disabled]="action ==='view'" type="text" class="form-control" name="firstname" [(ngModel)]="employee.firstname">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="lastname">Last Name</label>
-				<div class="col-sm-9">
+				<div class="col-sm-7">
 					<input [disabled]="action ==='view'" type="text" class="form-control" name="lastname" [(ngModel)]="employee.lastname">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="nickname">Nick Name</label>
-				<div class="col-sm-9">
+				<div class="col-sm-7">
 					<input [disabled]="action ==='view'" type="text" class="form-control" name="nickname" [(ngModel)]="employee.nickname">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="email">Email</label>
-				<div class="col-sm-9">
+				<div class="col-sm-7">
 					<input [disabled]="action ==='view'" type="email" class="form-control" name="email" [(ngModel)]="employee.email">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="phonenumber">Phone</label>
-				<div class="col-sm-9">
+				<div class="col-sm-7">
 					<input [disabled]="action ==='view'" type="tel" class="form-control" name="phonenumber" [(ngModel)]="employee.phonenumber">
 				</div>
 			</div>
@@ -77,13 +89,20 @@
 			
 			<div class="form-group">
 					<label class="control-label col-sm-2">Nationality</label>
-					<div class="col-sm-9">
+					<div class="col-sm-7">
 						<select [disabled]="action ==='view'" class="selectpicker form-control" name="grant" data-live-search="true" [(ngModel)]="employee.nationality">
 							<option>China</option>
 							<option>Singapore</option>
 							<option>Thailand</option>
 						</select>
 					</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="status">Status</label>
+				<div class="col-sm-7">
+					<input disabled type="text" class="form-control" name="status" [ngModel]="employee.status">
+				</div>
 			</div>
 
 		</form>

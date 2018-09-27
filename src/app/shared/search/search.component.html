@@ -1,0 +1,8 @@
+<div *ngIf="bVisibleSearch" class="input-group stylish-input-group">
+	<input type="text" class="form-control" placeholder="Search" [(ngModel)]="sSearchText">
+	<span class="input-group-addon">
+		<button type="submit" (click)="onClick(sSearchText)">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+	</span>
+</div>

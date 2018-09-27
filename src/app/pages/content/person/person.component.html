@@ -1,0 +1,45 @@
+
+
+<div class="panel panel-default">
+	<app-header-navigation [sName]="sPageName" [bVisibleSearch]="true" [aAction]="aActions" (onAction)="onToorBarAction($event)"></app-header-navigation>
+	<!-- <nav class="navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+				<span class="sr-only">Switch Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse-target">
+			<form class="sidebar-form navbar-form navbar-right">
+				<div class="input-group">
+					<input type="text" name="q" class="form-control" placeholder="Search..."> 
+					<span class="input-group-btn">
+						<button type="submit" name="search" class="btn btn-flat"> <i class="fa fa-search"></i> </button>
+					</span>
+				</div>
+			</form>
+			 <div class="navbar-form navbar-right">
+				<a (click)="onAddPerson()" class="btn" data-toggle="tooltip" title="New Person"><span>New Person</span></a>
+			</div>
+		    <div class="navbar-form navbar-right">
+				<a (click)="onRefresh()" class="btn" data-toggle="tooltip" title="refresh"><span>Refresh</span></a>
+			</div>
+		</div>
+	</nav> -->
+
+
+	<div class="row">
+		<div *ngFor="let person of persons" class="col-sm-2 col-md-2">
+			<div class="thumbnail">
+				<a (click)="onPersonClick(person.personid)">
+					<img style ="max-width:100%; max-height:124px;min-height:124px;" [src]="person.portrait">
+					<div class="caption">
+						<p>{{person.name}}</p>
+						<p>{{person.personid}}</p>
+					</div>
+				</a>
+			</div>
+		</div>		
+	</div>
+
+</div>

@@ -41,28 +41,28 @@ export class BaseService {
             } )
             .catch(( error: any ) => this.handleError( functionName, error ) );
     }
-    
-    protected postBlobCommand(url:string,data:any, functionName:string):Promise<any>{
-        return this.http.post( url, data, { observe: 'response', responseType: 'blob',withCredentials: true } )
-        .toPromise()
-        .then( res => {
-            const status: number = res.status;
-            if ( status === 200 ) {
-                const back = {
-                    code: status,
-                    data: res.body
+
+    protected postBlobCommand( url: string, data: any, functionName: string ): Promise<any> {
+        return this.http.post( url, data, { observe: 'response', responseType: 'blob', withCredentials: true } )
+            .toPromise()
+            .then( res => {
+                const status: number = res.status;
+                if ( status === 200 ) {
+                    const back = {
+                        code: status,
+                        data: res.body
+                    }
+                    return back;
+                } else {
+                    const back = {
+                        code: status
+                    }
+                    return back;
                 }
-                return back;
-            } else {
-                const back = {
-                    code: status
-                }
-                return back;
-            }
-        } )
-        .catch(( error: any ) => this.handleError( functionName, error ) );
+            } )
+            .catch(( error: any ) => this.handleError( functionName, error ) );
     }
-    
+
     protected getBlobCommand( url: string, functionName: string ): Promise<any> {
         return this.http.get( url, { observe: 'response', responseType: 'blob', withCredentials: true } )
             .toPromise()
@@ -119,5 +119,25 @@ export class BaseService {
                 message: message
             }
         } );
+    }
+
+    public encodeImageAsBase64( file ) {
+        var deferred = $.Deferred();
+        if ( file ) {
+            var reader = new FileReader();
+            reader.onload = function( e ) {
+                deferred.resolve( reader.result );
+            };
+            reader.readAsDataURL( file );
+        } else {
+            deferred.resolve( undefined );
+        }
+        return deferred.promise();
+    }
+
+    public generateUUID():any {
+        var date = new Date();
+        var uuid = "feng" + date.getDay() + date.getHours() + date.getMinutes() + date.getSeconds() + date.getMilliseconds() + Math.round( Math.random() * 10000 );
+        return uuid;
     }
 }

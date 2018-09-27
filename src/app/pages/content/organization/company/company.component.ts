@@ -172,7 +172,7 @@ export class CompanyComponent implements OnInit {
     }
     /**************************************************************************************************************/
     createCompany( data ): Promise<any> {
-        let actionUrl = ActionPath.org.company
+        let actionUrl = ActionPath.org.get_create_edit_company
         return this.orgService.createCompany( actionUrl, data ).then( back => {
             if ( back.code == 200 ) {
                 console.log( back.data );
@@ -182,7 +182,7 @@ export class CompanyComponent implements OnInit {
     }
     
     editCompany( data ): Promise<any> {
-        let actionUrl = ActionPath.org.company +'/' +this.id;
+        let actionUrl = ActionPath.org.get_create_edit_company +'/' +this.id;
         return this.orgService.editCompany( actionUrl, data ).then( back => {
             if ( back.code == 200 ) {
                 console.log( back.data );

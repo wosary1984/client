@@ -31,7 +31,7 @@ export class CompanylistComponent implements OnInit, AfterViewInit {
     constructor( private orgService: OrgService, private router: Router) { }
 
     getTree() {
-        let actionUrl = ActionPath.org.company
+        let actionUrl = ActionPath.org.get_all_company
         var that = this;
         this.orgService.getCompanies( actionUrl ).then( back => {
             if ( back.code == 200 ) {

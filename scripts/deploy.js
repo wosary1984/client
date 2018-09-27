@@ -9,7 +9,7 @@ const config = {
     folderPath: '../dist' // path relative script's location 
   };
 
-AWS.config.loadFromPath('./scripts/ECSCredentials.json');
+//AWS.config.loadFromPath('./scripts/ECSCredentials.json');
 
 // initialise S3 client
 const s3 = new AWS.S3({

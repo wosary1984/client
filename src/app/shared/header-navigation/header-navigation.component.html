@@ -1,3 +1,23 @@
-<p>
-  header-navigation works!
-</p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header ">
+      <div class="btn btn-sm navbar-btn pull-left"><i class="fa fa-pagelines fa-lg" aria-hidden="true"></i></div>
+      <a class="navbar-brand collapse navbar-collapse" href="#">{{sName}}</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="myNavbar">
+         
+      <ul class="nav navbar-nav navbar-right">
+      	<li *ngFor="let action of aAction">
+      		<a (click)="onClick(action.sAction)" class="btn" data-toggle="tooltip" title="{{action.sAction}}"><span><i class="{{action.sIcon}}"></i></span></a>
+      	</li>
+        <li><form class="navbar-form"><app-search [bVisibleSearch]="bVisibleSearch" (onSubmit)="onSubmit($event)"></app-search></form></li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -44,12 +44,14 @@
 				<td class="text-center"> {{emp.status}}</td>
 				<td class="text-center">
 					<div class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-						<i class="fa fa-cog"></i> 
-						<span class="caret"></span>
-					</a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							 <i class="fa fa-cog"></i> 
+							 <span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a (click)="onEditEmployee(emp.employeeid)"><i class="fa fa-pencil"></i><span>Edit</span></a> </li>
+							<li><a (click)="onEditEmployee(emp.employeeid)"><i class="fa fa-pencil"></i><span>Edit</span></a></li>
+							<li *ngIf="emp.status ==='NONE'"><a (click)="onEditEmployee(emp.employeeid)"><i class="fa fa-pencil"></i><span>Offer</span></a></li>
+							<li *ngIf="emp.status ==='NOTONBORAD'"><a (click)="onEditEmployee(emp.employeeid)"><i class="fa fa-pencil"></i><span>On Board</span></a></li>
 						</ul>
 					</div>
 				</td>

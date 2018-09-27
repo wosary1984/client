@@ -19,7 +19,7 @@ export class OrganizationComponent implements OnInit {
 
     /**************************************************************************************************************/
     getTree(): Promise<any> {
-        let actionUrl = ActionPath.org.company
+        let actionUrl = ActionPath.org.get_all_company
         var that = this;
         return this.orgService.getCompanies( actionUrl ).then( back => {
             if ( back.code == 200 ) {
