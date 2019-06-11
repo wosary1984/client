@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { StarterComponent } from "./starter.component";
 import { Routes, RouterModule } from "@angular/router";
-import { StompService ,StompConfig} from "@stomp/ng2-stompjs";
-import { stompConfig } from "../../../common/config/stomp.config";
+import { SharedModule } from "../../../shared/shared.module";
 
 const routes: Routes = [{
     path: '',
@@ -11,12 +10,10 @@ const routes: Routes = [{
 
 @NgModule( {
     imports: [
-        RouterModule.forChild( routes )
+        RouterModule.forChild( routes ),
+        SharedModule
     ],
-    providers: [
-        StompService,
-        { provide: StompConfig, useValue: stompConfig }
-    ],
+    providers: [],
     declarations: [StarterComponent]
 } )
 export class StarterModule {

@@ -249,7 +249,7 @@ export class DetailComponent implements OnInit {
                 var year = this.events[x];
                 if ( year.year === this.new_event.year ) {
                     var object = {
-                        id: this.commonService.generateUUID(),
+                        id: this.commonService.generateUUID('pe'),
                         date: this.new_event.date,
                         title: this.new_event.title,
                         content: this.new_event.content
@@ -269,7 +269,7 @@ export class DetailComponent implements OnInit {
                 var newYear = {
                     year: this.new_event.year,
                     events: [{
-                        id: this.commonService.generateUUID(),
+                        id: this.commonService.generateUUID('pe'),
                         date: this.new_event.date,
                         title: this.new_event.title,
                         content: this.new_event.content

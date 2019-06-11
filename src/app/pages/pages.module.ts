@@ -9,6 +9,8 @@ import { PageComponent } from './pages.component';
 import { HomeComponent } from './content/home/home.component';
 import { AuthGuardService } from "../service/auth-guard.service";
 import { Routes, RouterModule } from '@angular/router';
+import { StompService, StompConfig } from "@stomp/ng2-stompjs";
+import { stompConfig } from "../common/config/stomp.config";
 
 const routes: Routes = [
     {
@@ -49,6 +51,11 @@ const routes: Routes = [
                 path: 'message',
                 canActivate: [AuthGuardService],
                 loadChildren: './content/message/message.module#MessageModule'
+            },
+            {
+                path: 'd3',
+                canActivate: [AuthGuardService],
+                loadChildren: './content/chart/chart.module#ChartModule'
             }
         ]
     }
@@ -66,6 +73,8 @@ const routes: Routes = [
         HomeComponent
     ],
     exports: [RouterModule],
-    providers: []
+    providers: [StompService,
+        { provide: StompConfig, useValue: stompConfig }
+    ]
 } )
 export class PagesModule { }

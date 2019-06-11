@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Message } from "@stomp/stompjs";
 import { StompService, StompState } from "@stomp/ng2-stompjs";
@@ -14,14 +14,15 @@ export class WebsocketService {
     public wsstate: Observable<string>;
 
 
-    constructor( private stompService: StompService ) { }
+    constructor( @Inject( 'auth' ) private authService, private stompService: StompService ) { }
 
     public connectWebSocket() {
 
         this.wsstate = this.stompService.state.pipe( map(( state: number ) => StompState[state] ) );
 
-        this.message = this.stompService.subscribe( WebSocketConfig.all );
-
+        if ( this.authService.userAuth != undefined && this.authService.userAuth.user != undefined ) {
+            this.message = this.stompService.subscribe( WebSocketConfig.subscribPrefix + this.authService.userAuth.user.username );
+        }
     }
 
     public getSocketDataObservable() {

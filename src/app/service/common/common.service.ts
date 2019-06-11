@@ -35,4 +35,9 @@ export class CommonService extends BaseService {
         return this.getCommand( url, name );
     }
 
+    public post( actionUrl: string, data: any, name: string ) {
+        const url = this.serviceUrl( actionUrl );
+        return this.postCommand( url, data, name );
+    }
+
 }
